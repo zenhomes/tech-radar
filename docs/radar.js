@@ -232,9 +232,9 @@ function radar_visualization(config) {
         .text(config.rings[i].name)
         .attr("y", -rings[i].radius + 62)
         .attr("text-anchor", "middle")
-        .style("fill", "#e5e5e5")
+        .style("fill", "#97a3b4")
         .style("font-family", "Arial, Helvetica")
-        .style("font-size", 42)
+        .style("font-size", 36)
         .style("font-weight", "bold")
         .style("pointer-events", "none")
         .style("user-select", "none");
@@ -261,7 +261,8 @@ function radar_visualization(config) {
       .attr("transform", translate(title_offset.x, title_offset.y))
       .text(config.title)
       .style("font-family", "Arial, Helvetica")
-      .style("font-size", "34");
+      .style("font-size", "34")
+      .style("fill", "#002257");
 
     // footer
     radar.append("text")
@@ -281,14 +282,16 @@ function radar_visualization(config) {
         ))
         .text(config.quadrants[quadrant].name)
         .style("font-family", "Arial, Helvetica")
-        .style("font-size", "18");
+        .style("font-size", "18")
+        .style("fill", "#002257");
       for (var ring = 0; ring < 4; ring++) {
         legend.append("text")
           .attr("transform", legend_transform(quadrant, ring))
           .text(config.rings[ring].name)
           .style("font-family", "Arial, Helvetica")
           .style("font-size", "12")
-          .style("font-weight", "bold");
+          .style("font-weight", "bold")
+          .style("fill", "#002257");
         legend.selectAll(".legend" + quadrant + ring)
           .data(segmented[quadrant][ring])
           .enter()
@@ -297,7 +300,8 @@ function radar_visualization(config) {
               .attr("transform", function(d, i) { return legend_transform(quadrant, ring, i); })
               .text(function(d, i) { return d.id + ". " + d.label; })
               .style("font-family", "Arial, Helvetica")
-              .style("font-size", "11");
+              .style("font-size", "11")
+              .style("fill", "#002257");
       }
     }
   }
@@ -380,7 +384,7 @@ function radar_visualization(config) {
         .style("fill", d.color);
     } else {
       blip.append("circle")
-        .attr("r", 9)
+        .attr("r", 12)
         .attr("fill", d.color);
     }
 
