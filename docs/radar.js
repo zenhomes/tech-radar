@@ -48,10 +48,10 @@ function radar_visualization(config) {
   ];
 
   const rings = [
-    { radius: 130 },
-    { radius: 220 },
-    { radius: 310 },
-    { radius: 400 }
+    { radius: 140 },
+    { radius: 210 },
+    { radius: 280 },
+    { radius: 350 }
   ];
 
   const title_offset =
@@ -201,20 +201,20 @@ function radar_visualization(config) {
   if ("zoomed_quadrant" in config) {
     svg.attr("viewBox", viewbox(config.zoomed_quadrant));
   } else {
-    radar.attr("transform", translate(config.width / 2, config.height / 2));
+    radar.attr("transform", translate(config.width / 2.25, config.height / 2));
   }
 
   var grid = radar.append("g");
 
   // draw grid lines
   grid.append("line")
-    .attr("x1", 0).attr("y1", -400)
-    .attr("x2", 0).attr("y2", 400)
+    .attr("x1", 0).attr("y1", -350)
+    .attr("x2", 0).attr("y2", 350)
     .style("stroke", config.colors.grid)
     .style("stroke-width", 1);
   grid.append("line")
-    .attr("x1", -400).attr("y1", 0)
-    .attr("x2", 400).attr("y2", 0)
+    .attr("x1", -350).attr("y1", 0)
+    .attr("x2", 350).attr("y2", 0)
     .style("stroke", config.colors.grid)
     .style("stroke-width", 1);
 
@@ -230,11 +230,11 @@ function radar_visualization(config) {
     if (config.print_layout) {
       grid.append("text")
         .text(config.rings[i].name)
-        .attr("y", -rings[i].radius + 62)
+        .attr("y", -rings[i].radius + 45)
         .attr("text-anchor", "middle")
         .style("fill", "#97a3b4")
         .style("font-family", "Arial, Helvetica")
-        .style("font-size", 36)
+        .style("font-size", 32)
         .style("font-weight", "bold")
         .style("pointer-events", "none")
         .style("user-select", "none");
@@ -242,10 +242,10 @@ function radar_visualization(config) {
   }
 
   function legend_transform(quadrant, ring, index=null) {
-    var dx = ring < 2 ? 0 : 120;
-    var dy = (index == null ? -16 : index * 12);
+    var dx = ring < 2 ? 0 : 200;
+    var dy = (index == null ? -16 : index * 14);
     if (ring % 2 == 1) {
-      dy = dy + 36 + segmented[quadrant][ring-1].length * 12;
+      dy = dy + 36 + segmented[quadrant][ring-1].length * 14;
     }
     return translate(
       legend_offset[quadrant].x + dx,
@@ -270,7 +270,8 @@ function radar_visualization(config) {
       .text("▲ moved up     ▼ moved down")
       .attr("xml:space", "preserve")
       .style("font-family", "Arial, Helvetica")
-      .style("font-size", "10");
+      .style("font-size", "10")
+      .style("fill", "#002257");
 
     // legend
     var legend = radar.append("g");
