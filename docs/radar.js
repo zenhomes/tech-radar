@@ -262,7 +262,7 @@ function radar_visualization(config) {
       .text(config.title)
       .style("font-family", "Arial, Helvetica")
       .style("font-size", "34")
-      .style("fill", "#002257");
+      .style("fill", "#0077ff");
 
     // footer
     radar.append("text")
@@ -284,7 +284,7 @@ function radar_visualization(config) {
         .text(config.quadrants[quadrant].name)
         .style("font-family", "Arial, Helvetica")
         .style("font-size", "18")
-        .style("fill", "#002257");
+        .style("fill", "#0077ff");
       for (var ring = 0; ring < 4; ring++) {
         legend.append("text")
           .attr("transform", legend_transform(quadrant, ring))
